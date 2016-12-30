@@ -18,7 +18,7 @@ router.post('/crearCuenta', function (req, res) {
 	if(req.body.password!=req.body.reppass){
 		res.send('Contraseña no coinciden');
 	}else{
-		modeloUsuario.findOne({$or:[{'usuario': req.body.usuario},{'email':req.body.email},{'telefono':req.body.telefono}]},
+		User.findOne({$or:[{'usuario': req.body.usuario},{'email':req.body.email},{'telefono':req.body.telefono}]},
 		'usuario email telefono', function (err, resultado) {
 			if (err) return handleError(err);
 			if(resultado!=null){
